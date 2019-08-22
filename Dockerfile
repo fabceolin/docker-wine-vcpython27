@@ -6,9 +6,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -yy -q
 RUN apt-get install -yy -q software-properties-common
 RUN dpkg --add-architecture i386
+RUN wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+RUN apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 RUN apt-get update -yy -q
 RUN apt-get install -yy -q wine-stable
-RUN apt-get install -yy -q winetricks xvfb
+RUN apt-get install -yy -q winetricks xvfb zenity
 RUN apt-get install -yy -q openssh-server openssh-client x11-apps
 RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || :
 RUN wget -q -O /var/tmp/VCForPython27.msi "http://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi" && chmod 0777 /var/tmp/VCForPython27.msi
