@@ -4,7 +4,7 @@ MAINTAINER Fabrício Ceolin <fabceolin@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -yy -q
-RUN apt-get install -yy -q python-software-properties software-properties-common
+RUN apt-get install -yy -q software-properties-common
 RUN apt-add-repository -y ppa:ubuntu-wine/ppa
 RUN dpkg --add-architecture i386
 RUN apt-get update -yy -q
