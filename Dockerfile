@@ -1,5 +1,5 @@
-FROM ubuntu:latest
-MAINTAINER Amit Bakshi <ambakshi@gmail.com>
+FROM ubuntu:18.04
+MAINTAINER Fabrício Ceolin <fabceolin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -8,8 +8,8 @@ RUN apt-get install -yy -q python-software-properties software-properties-common
 RUN apt-add-repository -y ppa:ubuntu-wine/ppa
 RUN dpkg --add-architecture i386
 RUN apt-get update -yy -q
-RUN apt-get install -yy -q wine
-RUN apt-get install -yy -q wine1.7 winetricks xvfb
+RUN apt-get install -yy -q wine-stable
+RUN apt-get install -yy -q winetricks xvfb
 RUN apt-get install -yy -q openssh-server openssh-client x11-apps
 RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || :
 RUN wget -q -O /var/tmp/VCForPython27.msi "http://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi" && chmod 0777 /var/tmp/VCForPython27.msi
